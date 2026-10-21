@@ -45,6 +45,15 @@ class LoginPage extends BasePage {
   }
 
   /**
+   * Navigate to the login page.
+   */
+  async navigateToLoginPage(): Promise<void> {
+    this.logger.info('Navigating to login page.');
+    this.allureReporter.addStep('Navigating to login page.');
+    await this.page.goto('https://new.freecrm.com/');
+  }
+
+  /**
    * Fill the email field with the provided email.
    * @param email - The email to enter.
    */

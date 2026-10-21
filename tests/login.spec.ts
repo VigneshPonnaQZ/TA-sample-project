@@ -5,6 +5,14 @@ import { LoginPage } from '../src/pages/login.page';
  * Test suite for login functionality.
  */
 test.describe('Login Functionality', () => {
+  test('should login successfully with valid credentials', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.navigateToLoginPage();
+    await loginPage.enterEmail(process.env.TEST_LOGIN_EMAIL);
+    await loginPage.enterPassword(process.env.TEST_LOGIN_PASSWORD);
+    await loginPage.clickLogin();
+    await loginPage.verifyLoginSuccess();
+  });
   let loginPage: LoginPage;
 
   test.beforeEach(async ({ page }) => {
